@@ -119,12 +119,12 @@ def booking_list(request):
 
 def update(request,booking_id):
     booking=Booking.objects.get(id=booking_id)
-    reserved_error=True
+    reserved_error=False
     if request.method=="POST":
         form=BookingForm(request.POST,instance=booking)
         if form.is_valid():
             table=form.cleaned_data['table']
-            if table.status=='reserved' and table!=booking.table:
+            if table.status =='reserved':
                 reserved_error=True
             else:
                 form.save()

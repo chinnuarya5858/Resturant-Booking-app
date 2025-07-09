@@ -11,7 +11,6 @@
         <a href="{% url 'bookings' %}">Cancel</a>
     </form>
 </div>
-<p>Reserved Error:{{reserved_error}}</p>
 <script>
     document.addEventListener('DOMContentLoaded',function(){
         {% if reserved_error %}
