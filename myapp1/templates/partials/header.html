@@ -1,0 +1,15 @@
+{% load static %}
+<header>
+  <img src="{% static 'img/favicon.ico' %}" />
+</header>
+<nav>
+  <ul>
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'menu' %}">Menu</a></li>
+    <li><a href="{%url 'table' %}">Table Details</a></li>
+    <li>
+      <a href="{% url 'register' %}?next={%url 'login'%}">Register for Booking</a></li>
+    <li><a href="{%url 'bookings'%}">Bookings</a></li>
+  </ul>
+</nav>

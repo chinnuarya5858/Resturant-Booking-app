@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+  <article>
+    <h1>All Bookings</h1>
+    <!--Begin row-->
+    <div class="row">
+      <!--Begin col-->
+      <div class="column">
+        <pre id="bookings"></pre>
+      </div>
+      <!--End col-->
+
+      <!--Begin col-->
+      <table>
+        <tr>
+          <th>Customer</th>
+          <th>Table</th>
+          <th>Booking Time</th>
+        </tr>
+        {% for booking in bookings%}
+        <tr>
+          <td>{{ booking.user.username }}</td>
+          <td>{{ booking.table.table_number }}</td>
+          <td>{{ booking.booking_time }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <!--End col-->
+    </div>
+    <!--End row-->
+  </article>
+</section>
+
+{% endblock %}

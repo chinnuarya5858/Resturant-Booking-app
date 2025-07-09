@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Table List</h1>
+    <table border="1">
+        <tr>
+            <th>Table Number</th>
+            <th>Capacity</th>
+            <th>Status</th>
+        </tr>
+        {% for table in tables %}
+        <tr>
+            <td>{{ table.table_number }}</td>
+            <td>{{table.capacity }}</td>
+            <td> 
+                {% if table.status == 'available' %}
+                    <span class="status-available">{{ table.get_status_display }}</span>
+                {% elif table.status == 'reserved' %}
+                    <span class='status-reserved'>{{ table.get_status_display }}</span>
+                {% else %}
+                    {{table.get_status_display}}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+

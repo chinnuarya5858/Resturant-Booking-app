@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+<div class="dashboard-container">
+    <h2>Welcome ,{{ request.user.username|default:request.user.username }}!</h2>
+      <div class="dashboard-colmns" style="display: flex; gap:40px; align-items: flex-start; margin-top: 20px;">
+        <div class="dashboard-section">
+          <h2>Available Tables</h2>
+          <ul>
+            {% for table in tables %}
+              <li>Table {{table.id}}</li>
+            {% empty %}
+              <li>No tables available</li>
+            {% endfor %}
+          </ul>
+        </div>
+    
+        <form method="POST" id="form">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Create Booking</button>
+        </form>
+        </div>
+        <div class="dashboard-section">
+          <h2>Your Current Bookings</h2>
+          {% if user_bookings %}
+          <table>
+            <tr>
+              <th>Table Number</th>
+              <th>Booking Time</th>
+            </tr>
+            {% for bookings in user_bookings %}
+            <tr>
+              <td>{{ bookings.table.table_number }}</td>
+              <td>{{ bookings.booking_time }}</td>
+              <td>
+                <a href="{% url 'Update' bookings.id %}">Update</a>
+              </td>
+              <td>
+                <a href="{% url 'delete' bookings.id %}">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+          {% else %}
+          <p>You have no active bookings!</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded',function(){
+        {% if reserved_error %}
+          alert('This table is already reserved.Please choose another table')
+        {% endif %}
+      });
+    </script>
+</body>
+
+{% endblock %}
+

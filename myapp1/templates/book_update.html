@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<body>
+<div>
+    <h2>Update Booking</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+        <a href="{% url 'bookings' %}">Cancel</a>
+    </form>
+</div>
+<p>Reserved Error:{{reserved_error}}</p>
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+        {% if reserved_error %}
+            alert('This table is already reserved.Please choose another one.');
+        {% endif %}
+    });
+</script>
+</body>
+{% endblock %}
