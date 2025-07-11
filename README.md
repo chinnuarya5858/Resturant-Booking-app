@@ -1,1 +1,1 @@
-# Resturant-Booking-System
+# Restaurant-Booking-System
