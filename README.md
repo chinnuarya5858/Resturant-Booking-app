@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🍽️ Restaurant Booking App
 
 A Django-based web application that allows users to book tables at a restaurant. This project supports full user authentication, admin management, and CRUD operations for bookings and tables.
@@ -50,3 +51,6 @@ A Django-based web application that allows users to book tables at a restaurant.
 
 ---
 
+=======
+# Restaurant-Booking-System
+>>>>>>> 79b1c4aa0e142cf6beb506b903304e52b98a7bd0
