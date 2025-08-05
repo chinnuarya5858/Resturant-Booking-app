@@ -116,7 +116,7 @@ def booking_list(request):
     bookings=Booking.objects.all()
     return render(request,'bookings.html',{'bookings':bookings})
 
-
+@login_required
 def update(request,booking_id):
     booking=Booking.objects.get(id=booking_id)
     reserved_error=False
